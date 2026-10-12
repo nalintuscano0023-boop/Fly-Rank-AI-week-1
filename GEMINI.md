@@ -44,3 +44,10 @@ This repository is governed by the following engineering instructions and behavi
 - **Make only requested changes**: Do not refactor unrelated code or perform broad speculative rewrites.
 - **Avoid bloat**: Do not introduce unnecessary files, demo boilerplate, third-party libraries, or features unless explicitly requested.
 - Confirm critical design decisions with the developer before executing destructive operations.
+
+---
+
+## 7. Form Engineering, Accessibility & Verification Discipline
+- **Input Sanitization & Validation**: Always trim whitespace (`.trim()`) from text inputs before validating required fields. Validate structured formats (e.g., email via regex) and display field-specific inline error messages. Never display success feedback when validation fails.
+- **Accessible Form Associations**: Explicitly associate every form `<label>` with its `<input>` using matching `htmlFor` and `id` attributes. Connect error messages accessibly using `aria-invalid` and `aria-describedby`, ensure visible focus indicators (`:focus-visible`), and announce status feedback via `role="status"` with `aria-live="polite"`.
+- **Automated Verification Before Completion**: For any interactive form or component, write automated unit and accessibility tests (using Vitest and React Testing Library) covering empty fields, whitespace-only inputs, invalid formats, and valid submissions. Run and pass `npm test` and `npm run build` with zero errors before declaring the task complete.
