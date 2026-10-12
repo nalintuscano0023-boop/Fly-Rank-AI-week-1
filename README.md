@@ -21,6 +21,22 @@ Welcome to the repository for the **FlyRank AI Internship — Front-End AI Engin
 
 ---
 
+## 📁 Repository Structure & Milestone Status
+
+### Current Milestone: Week 1 (FE-01) — Toolchain & Environment Setup
+This repository is currently in its initial setup phase. The baseline repository files and AI development rules are in place:
+
+| File | Purpose |
+| :--- | :--- |
+| [README.md](README.md) | Project overview, technical specifications, and setup instructions |
+| [LICENSE](LICENSE) | MIT License defining open-source terms (Author: Nalin Tuscano) |
+| [.gitignore](.gitignore) | Excludes dependencies, build artifacts, local environments, and secrets |
+| [GEMINI.md](GEMINI.md) | Engineering guidelines and constraints for the Antigravity AI coding assistant |
+
+> **Status**: FE-01 repository setup complete. Application scaffolding (React + Vite) will follow in upcoming milestones once the capstone concept is finalized.
+
+---
+
 ## 🚀 Getting Started
 
 *(Note: The application scaffolding will be introduced in subsequent project milestones. The following commands represent the planned development workflow.)*
