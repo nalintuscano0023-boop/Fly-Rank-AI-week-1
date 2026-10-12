@@ -7,8 +7,8 @@
 
 ---
 
-## 1. Executive Summary
-This document provides a realistic audit of 12 recurring tasks across my academic studies, frontend development, internship assignments, and career development. Each task is classified into an actionable human–AI workflow model to maximize productivity, maintain academic integrity, and build high-quality engineering habits.
+## 1. Context & Purpose
+This document audits 12 recurring tasks across my academic coursework at SFIT, frontend development, internship assignments, and personal learning. Each task is classified into one of four human–AI workflow categories to establish disciplined engineering habits, safeguard academic integrity, and target future automation opportunities.
 
 ---
 
@@ -16,18 +16,20 @@ This document provides a realistic audit of 12 recurring tasks across my academi
 
 | # | Task | Frequency / Context | Classification | Rationale |
 | :-: | :--- | :--- | :--- | :--- |
-| **1** | Sitting for semester university exams and in-person college lab practicals | Exam periods & bi-weekly lab sessions | **Just me** | Requires personal presence, authentic subject mastery, and institutional academic integrity that cannot and should not be delegated. |
-| **2** | Making career decisions, choosing internship priorities, and personal self-reflection | Monthly or at major career milestones | **Just me** | Involves personal values, individual goals, and long-term accountability that only I can evaluate and decide for my own trajectory. |
-| **3** | Drafting technical LinkedIn posts and project milestone summaries | Weekly after completing assignments or features | **Delegate to AI with review** | AI quickly creates structured drafts from my raw notes, which I then review, edit, and personalize to match my authentic voice. |
-| **4** | Generating initial boilerplate files and configuration templates (e.g., `.gitignore`, `LICENSE`, base types) | At the start of new projects or assignment milestones | **Delegate to AI with review** | AI reliably generates standard, error-free configurations, allowing me to quickly verify specifics like paths and licensing. |
-| **5** | Writing initial unit test stubs and test cases for TypeScript utility functions | 2–3 times per week during frontend development | **Delegate to AI with review** | AI generates comprehensive edge-case inputs and test fixtures rapidly, which I verify against actual application requirements. |
-| **6** | Debugging tricky React UI state issues and TypeScript compiler errors | 3–4 times per week during coding sessions | **Collaborate with AI** | Requires iterative back-and-forth problem solving where I supply runtime logs and behavior, and test AI suggestions in my IDE. |
-| **7** | Planning component architecture and data flow for new frontend interfaces | Weekly when starting new project features | **Collaborate with AI** | Demands collaborative exploration to balance component modularity, props flow, and simplicity tailored to project requirements. |
-| **8** | Breaking down complex computer science theory concepts (e.g., OS paging, SQL indexing, algorithms) | 2–3 times per week during SFIT course revision | **Collaborate with AI** | Interactive Q&A allows me to ask follow-up questions, request simple code examples, and test my own understanding step by step. |
-| **9** | Auditing frontend interfaces for responsive layouts and WCAG accessibility standards | Weekly before submitting frontend code | **Collaborate with AI** | AI identifies missing ARIA labels and responsive CSS issues while I inspect elements across viewports and test screen reader behavior. |
-| **10** | Formatting code style and fixing deterministic syntax issues (Prettier / ESLint) | On every git commit (continuous) | **Fully automate** | Linters and formatters follow fixed, deterministic rules that run automatically via pre-commit hooks without manual intervention. |
-| **11** | Running TypeScript type checks and build verification before git pushes | On every git push (continuous) | **Fully automate** | Automated Git pre-push scripts (`npm run build` / `tsc --noEmit`) catch breaking errors reliably without manual oversight. |
-| **12** | Generating release changelogs and semantic version tags from Conventional Commits | At the completion of each project milestone | **Fully automate** | Standardized commit messages allow automated release tools to parse and generate accurate changelogs with zero manual effort. |
+| **1** | Writing university semester exams and completing in-person college lab practicals | During semester exam periods and scheduled college lab evaluations | **Just me** | Requires authentic personal knowledge, physical presence, and strict adherence to university academic integrity rules. |
+| **2** | Evaluating career goals, setting internship priorities, and personal self-reflection | During semester milestones and career planning checkpoints | **Just me** | Involves personal values, self-assessment, and individual accountability that cannot be outsourced to any external tool. |
+| **3** | Drafting technical LinkedIn posts and project milestone summaries | After completing project milestones or key learning topics | **Delegate to AI with review** | AI rapidly drafts clear initial outlines from my raw technical notes, which I then review, edit, and personalize. |
+| **4** | Generating initial boilerplate files and configuration templates (e.g., `.gitignore`, `LICENSE`, base types) | At the start of new frontend projects or assignment repos | **Delegate to AI with review** | AI reliably generates standard configuration structures, allowing me to verify paths, project rules, and license terms. |
+| **5** | Writing initial unit test stubs and test fixtures for TypeScript utility functions | During frontend coding sessions when adding utility modules | **Delegate to AI with review** | AI creates initial test inputs and edge cases quickly, which I inspect and run against actual application logic. |
+| **6** | Debugging complex React UI state glitches and TypeScript compiler errors | During active frontend coding and debugging sessions | **Collaborate with AI** | Requires iterative back-and-forth problem solving: I provide logs and symptoms, and test suggested fixes in my IDE. |
+| **7** | Planning component architecture, props hierarchy, and state flow for new UI features | When architecting new frontend components or interface layouts | **Collaborate with AI** | Demands joint exploration to balance component reusability, modularity, and clean code principles. |
+| **8** | Breaking down difficult computer science concepts (e.g., OS paging, SQL indexing, algorithms) | During exam preparation and course revision sessions | **Collaborate with AI** | Interactive Q&A allows me to ask follow-up questions, request analogies, and verify my understanding step by step. |
+| **9** | Auditing frontend interfaces for responsive CSS behavior and WCAG accessibility standards | Before completing or submitting frontend assignments | **Collaborate with AI** | AI flags accessibility issues and media query gaps while I inspect responsive layouts and verify keyboard navigation. |
+| **10** | Formatting code style and fixing deterministic syntax issues (Prettier / ESLint) | Target workflow: Candidate for automated pre-commit tooling | **Fully automate** | High-value candidate for automation because style formatters follow fixed, deterministic rules without manual judgment. |
+| **11** | Running TypeScript compiler checks and build validation before git pushes | Target workflow: Candidate for pre-push script automation | **Fully automate** | High-value candidate for automation because running type checks (`tsc --noEmit`) programmatically stops broken commits. |
+| **12** | Generating release changelogs and version tags from Conventional Commits | Target workflow: Candidate for milestone release pipelines | **Fully automate** | High-value candidate for automation because standardized commit prefixes can be parsed mechanically by release tools. |
+
+> *Note on Automation*: Tasks 10–12 represent target automation workflows identified during this audit. They are candidates for future script and CI/CD hook configuration rather than active automations currently configured in this repository.
 
 ---
 
@@ -36,52 +38,50 @@ This document provides a realistic audit of 12 recurring tasks across my academi
 The following three tasks are selected from the audit for reuse in subsequent prompting, collaboration, and automation assignments.
 
 ### Target Task 1: Debugging and Refactoring a React/TypeScript Component
-- **Starting Input**: A buggy or unoptimized React functional component written in TypeScript, along with its runtime error message, unwanted re-rendering behavior, or type mismatch description.
-- **Expected Output**: A clean, refactored component resolving the issue, typed interfaces without `any`, and concise comments explaining why the fix works.
+- **Starting Input**: A faulty or unoptimized React functional component written in TypeScript, accompanied by runtime console errors, unwanted re-rendering symptoms, or type mismatch messages.
+- **Expected Output**: A clean, refactored component that resolves the error, includes strict TypeScript interfaces without `any`, and provides concise comments explaining the resolution.
 - **Measurable Definition of Success**:
-  1. Zero TypeScript compiler errors (`tsc --noEmit` returns exit code 0).
-  2. The reported bug or re-render is eliminated during manual browser testing.
-  3. No unnecessary external libraries or code bloat are introduced.
-- **What I Must Personally Verify**: Test the component live in the browser, check edge cases (empty states, loading states), and confirm compliance with project engineering guidelines (`GEMINI.md`).
+  1. TypeScript compiler checks pass cleanly (`tsc --noEmit` exits with 0 errors).
+  2. The reported runtime error or re-render bug is eliminated in manual browser testing.
+  3. No unrequested libraries or unnecessary boilerplate dependencies are introduced.
+- **What I Must Personally Verify**: Test component behavior live in the browser, verify props and state updates across edge cases (empty states, loading states), and confirm adherence to project guidelines (`GEMINI.md`).
 
 ### Target Task 2: Converting Raw Technical Notes into a Structured Study Guide
-- **Starting Input**: Unstructured, rough lecture or study notes covering an IT engineering topic (e.g., Database Indexing, React Hooks Lifecycle, or CSS Layouts).
-- **Expected Output**: A structured markdown reference document containing: a 1-paragraph plain-English concept summary, key mechanisms, a comparative summary table, and practical code snippets.
+- **Starting Input**: Unstructured, rough lecture notes covering a core IT engineering concept (e.g., Database Indexing, React Hooks Lifecycle, or CSS Grid/Flexbox Layouts).
+- **Expected Output**: A concise, structured markdown guide containing a 1-paragraph plain-English concept summary, key mechanisms, a comparative summary table, and a verified code snippet.
 - **Measurable Definition of Success**:
-  1. Captures 100% of the technical concepts present in the raw input.
-  2. Readable and understandable in under 3 minutes using simple English.
-  3. Contains zero fabricated terms, incorrect technical definitions, or hallucinated facts.
-- **What I Must Personally Verify**: Cross-check definitions against authoritative sources (official documentation or academic textbooks) to ensure factual accuracy before exam study.
+  1. Captures all core technical points present in the source notes without omitting critical requirements.
+  2. Concise enough to be read and understood in under 3 minutes using simple English.
+  3. All technical definitions and code snippets match verified documentation (e.g., MDN, official React docs, or SFIT course textbooks).
+- **What I Must Personally Verify**: Cross-check definitions and code behavior against official technical documentation to confirm factual accuracy and eliminate unverified claims.
 
 ### Target Task 3: Auditing Frontend UI for Responsiveness and WCAG 2.1 AA Accessibility
-- **Starting Input**: The HTML/JSX markup and CSS stylesheet of a responsive web page, along with target viewport breakpoints (mobile: 375px, tablet: 768px, desktop: 1200px).
-- **Expected Output**: An audit report detailing accessibility violations, color contrast deficiencies, missing semantic tags, and a diff block containing the corrected CSS and JSX.
+- **Starting Input**: The JSX/HTML markup and CSS styles of a responsive webpage, along with target viewport breakpoints (mobile: 375px, tablet: 768px, desktop: 1200px).
+- **Expected Output**: An audit report identifying accessibility shortcomings, color contrast deficiencies, missing semantic tags, and a diff snippet containing corrected CSS and JSX.
 - **Measurable Definition of Success**:
-  1. All text elements meet the WCAG 2.1 AA minimum contrast ratio of 4.5:1.
-  2. All interactive elements (buttons, inputs, links) have descriptive labels or `aria-label` attributes.
-  3. Layout adapts with zero horizontal overflow across viewports from 320px to 1440px.
-- **What I Must Personally Verify**: Inspect layout responsiveness using browser DevTools device emulation and test keyboard accessibility using only `Tab`, `Shift+Tab`, and `Enter`.
+  1. **Automated Verification**: Automated scanner (e.g., axe DevTools or Lighthouse) detects zero critical accessibility violations, with text meeting the 4.5:1 contrast ratio.
+  2. **Responsive Layout**: Zero horizontal overflow or layout breakages across viewport widths from 320px to 1440px.
+  3. **Interactive Labelling**: All interactive elements (buttons, inputs, links) possess accessible names or `aria-label` attributes.
+- **What I Must Personally Verify**: Perform manual keyboard-only navigation (`Tab`, `Shift+Tab`, `Enter`, `Space`) to confirm logical tab order and visible focus rings, and conduct device emulation testing in browser DevTools.
 
 ---
 
-## 4. Manual Implementation Checklist
+## 4. Manual Implementation Checklist (Pending External Steps)
 
-The following external accounts, training, and setup steps require direct user action outside this IDE:
+The following external accounts, coursework, and Claude setup tasks require my direct personal execution outside this IDE:
 
-- [ ] **Claude Account Setup**: Log in or create a free account at [claude.ai](https://claude.ai).
-- [ ] **ChatGPT Account Setup**: Log in or create a free account at [chatgpt.com](https://chatgpt.com).
-- [ ] **Anthropic Academy Enrollment**:
-  - Visit [anthropic.com](https://anthropic.com) or the Anthropic Academy portal.
-  - Enroll in the free course: **"AI Fluency: Framework & Foundations"**.
-  - Complete at least **Module 1** and save notes/confirmation.
-- [ ] **Create Claude Project**:
-  - Open Claude, navigate to **Projects**, and select **Create Project**.
-  - Name the project: `FlyRank Frontend AI Engineering`.
-  - Copy and paste the instructions from `CLAUDE_PROJECT_INSTRUCTIONS.md` into the Project Custom Instructions field.
-- [ ] **Capture Claude Project Screenshot**:
-  - Take a clear screenshot of the configured Claude Project showing your project name and custom instructions.
-  - Save the screenshot for your FlyRank portal submission.
-- [ ] **Submit Deliverables on FlyRank Portal**:
-  - Upload `WORKFLOW_AUDIT.md`.
-  - Upload the Claude Project screenshot.
-  - Confirm all three target tasks and manual checklist items are documented.
+- [ ] **Account Setup (Free Tiers)**:
+  - Verify active free account on [chatgpt.com](https://chatgpt.com).
+  - Verify active free account on [claude.ai](https://claude.ai).
+  - Access Anthropic Academy platform.
+- [ ] **Course Enrollment & Completion**:
+  - Enroll in the free course: **"AI Fluency: Framework & Foundations"** on Anthropic Academy.
+  - Complete at least **Module 1** and retain study notes.
+- [ ] **Claude Project Creation**:
+  - Open Claude, go to **Projects**, and create a project named `FlyRank Frontend AI Engineering`.
+  - Copy custom instructions from `CLAUDE_PROJECT_INSTRUCTIONS.md` and save them in the project settings.
+- [ ] **Screenshot Capture**:
+  - Capture a clear screenshot showing the configured Claude Project (title and custom instructions visible).
+  - Save as `claude_project_setup.png` for submission.
+- [ ] **FlyRank Portal Submission**:
+  - Submit the workflow audit table, the three target tasks with success criteria, and the genuine Claude Project screenshot.
